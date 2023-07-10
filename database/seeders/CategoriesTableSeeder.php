@@ -16,33 +16,17 @@ class CategoriesTableSeeder extends Seeder
                 'description'   => 'Lorem picsum',
             ],
             [
-                'name'          => 'Attualità',
+                'name'          => 'Front-End',
                 'description'   => 'Lorem picsum',
             ],
             [
-                'name'          => 'Videogiochi',
+                'name'          => 'Back-End',
                 'description'   => 'Lorem picsum',
             ],
             [
-                'name'          => 'Sport',
+                'name'          => 'Full Stack',
                 'description'   => 'Lorem picsum',
-            ],
-            [
-                'name'          => 'Cronaca',
-                'description'   => 'Lorem picsum',
-            ],
-            [
-                'name'          => 'Informatica',
-                'description'   => 'Lorem picsum',
-            ],
-            [
-                'name'          => 'Cucina',
-                'description'   => 'Lorem picsum',
-            ],
-            [
-                'name'          => 'Politica',
-                'description'   => 'Lorem picsum',
-            ],
+            ]
         ];
 
         foreach ($categories as $category) {

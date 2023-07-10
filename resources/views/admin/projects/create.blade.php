@@ -1,16 +1,15 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <h1>Edit Post</h1>
+    <h1>Add New Project</h1>
 
-    <form method="POST" action="{{ route('admin.posts.update', ['post' => $post]) }}" novalidate>
+    <form method="post" action="{{ route('admin.projects.store') }}" novalidate>
         @csrf
-        @method('put')
 
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                value="{{ old('title', $post->title) }}">
+                value="{{ old('title') }}">
             @error('title')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -21,7 +20,7 @@
         <div class="mb-3">
             <label for="url_image" class="form-label">Image</label>
             <input type="url" class="form-control @error('url_image') is-invalid @enderror" id="url_image"
-                name="url_image" value="{{ old('url_image', $post->url_image) }}">
+                name="url_image" value="{{ old('url_image') }}">
             @error('url_image')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -31,7 +30,7 @@
 
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="3" name="content">{{ old('content', $post->content) }}</textarea>
+            <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="3" name="content">{{ old('content') }}</textarea>
             @error('content')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -43,8 +42,7 @@
             <label for="category" class="form-label">Category</label>
             <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @if (old('category_id', $post->category->id) == $category->id) selected @endif>
-                        {{ $category->name }}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             @error('category_id')
@@ -54,6 +52,6 @@
             @enderror
         </div>
 
-        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-primary">Save</button>
     </form>
 @endsection

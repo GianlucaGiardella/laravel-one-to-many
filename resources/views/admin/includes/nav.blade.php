@@ -17,11 +17,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Posts
+                        Projects
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('admin.posts.index') }}">Index</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.posts.create') }}">Add</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.projects.index') }}">Index</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.projects.create') }}">Add</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

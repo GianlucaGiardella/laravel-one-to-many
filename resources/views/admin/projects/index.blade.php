@@ -1,12 +1,12 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <h1>Posts</h1>
+    <h1>Projects</h1>
 
     @if (session('delete_success'))
-        @php $post = session('delete_success') @endphp
+        @php $project = session('delete_success') @endphp
         <div class="alert alert-danger">
-            Il Post "{{ $post->title }}" è stato eliminato
+            Project "{{ $project->title }}" deleted
         </div>
     @endif
 
@@ -20,18 +20,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $post)
+            @foreach ($projects as $project)
                 <tr>
-                    <th scope="row">{{ $post->id }}</th>
-                    <td>{{ $post->title }}</td>
+                    <th scope="row">{{ $project->id }}</th>
+                    <td>{{ $project->title }}</td>
                     <td><a
-                            href="{{ route('admin.categories.show', ['category' => $post->category]) }}">{{ $post->category->name }}</a>
+                            href="{{ route('admin.categories.show', ['category' => $project->category]) }}">{{ $project->category->name }}</a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.posts.show', ['post' => $post->id]) }}">View</a>
-                        <a class="btn btn-warning" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">Edit</a>
+                        <a class="btn btn-primary"
+                            href="{{ route('admin.projects.show', ['project' => $project->id]) }}">View</a>
+                        <a class="btn btn-warning"
+                            href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>
                         <button class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                            data-id="{{ $post->id }}">Delete</button>
+                            data-id="{{ $project->id }}">Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -44,8 +46,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form action="" data-template="{{ route('admin.posts.destroy', ['post' => '*****']) }}"
-                                method="post" class="d-inline-block" id="confirm-delete">
+                            <form action=""
+                                data-template="{{ route('admin.projects.destroy', ['project' => '*****']) }}"
+                                method="project" class="d-inline-block" id="confirm-delete">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>
@@ -58,5 +61,5 @@
         </tbody>
     </table>
 
-    {{ $posts->links() }}
+    {{ $projects->links() }}
 @endsection
