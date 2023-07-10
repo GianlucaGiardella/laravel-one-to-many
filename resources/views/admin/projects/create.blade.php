@@ -39,13 +39,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <label for="type" class="form-label">Type</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" id="type" name="type_id">
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
             </select>
-            @error('category_id')
+            @error('type_id')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

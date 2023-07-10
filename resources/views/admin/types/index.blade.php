@@ -1,7 +1,7 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <h1>Categories</h1>
+    <h1>Types</h1>
 
     <table class="table table-striped">
         <thead>
@@ -12,17 +12,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($types as $type)
                 <tr>
-                    <th scope="row">{{ $category->id }}</th>
-                    <td>{{ $category->name }}</td>
+                    <th scope="row">{{ $type->id }}</th>
+                    <td>{{ $type->name }}</td>
                     <td>
-                        <a class="btn btn-primary"
-                            href="{{ route('admin.categories.show', ['category' => $category->id]) }}">View</a>
-                        <a class="btn btn-warning"
-                            href="{{ route('admin.categories.edit', ['category' => $category->id]) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('admin.types.show', ['type' => $type->id]) }}">View</a>
+                        <a class="btn btn-warning" href="{{ route('admin.types.edit', ['type' => $type->id]) }}">Edit</a>
                         <button class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                            data-id="{{ $category->id }}">Delete</button>
+                            data-id="{{ $type->id }}">Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -35,9 +33,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form action=""
-                                data-template="{{ route('admin.categories.destroy', ['category' => '*****']) }}"
-                                method="category" class="d-inline-block" id="confirm-delete">
+                            <form action="" data-template="{{ route('admin.types.destroy', ['type' => '*****']) }}"
+                                method="type" class="d-inline-block" id="confirm-delete">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-danger">Delete</button>

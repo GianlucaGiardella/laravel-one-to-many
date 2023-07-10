@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Models\Project;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     private $validations = [
         'title' => 'required|string|min:5|max:100',
-        'category_id' => 'required|integer|exists:categories,id',
+        'type_id' => 'required|integer|exists:types,id',
         'url_image' => 'required|url|max:400',
         'content' => 'required|string',
     ];
@@ -35,7 +35,7 @@ class ProjectController extends Controller
     {
         $categories = Project::all();
 
-        return view('admin.projects.create', compact('categories'));
+        return view('admin.projects.create', compact('types'));
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class ProjectController extends Controller
 
         $newProject = new Project();
         $newProject->title = $data['title'];
-        $newProject->category_id = $data['category_id'];
+        $newProject->type_id = $data['type_id'];
         $newProject->url_image = $data['url_image'];
         $newProject->content = $data['content'];
         $newProject->save();
@@ -61,9 +61,9 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $categories = Category::all();
+        $categories = Type::all();
 
-        return view('admin.projects.edit', compact('project', 'categories'));
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     public function update(Request $request, Project $project)
@@ -73,7 +73,7 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $project->title = $data['title'];
-        $project->category_id = $data['category_id'];
+        $project->type_id = $data['type_id'];
         $project->url_image = $data['url_image'];
         $project->content = $data['content'];
         $project->update();

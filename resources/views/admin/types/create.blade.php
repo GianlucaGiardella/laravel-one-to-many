@@ -1,16 +1,15 @@
 @extends('admin.layouts.base')
 
 @section('contents')
-    <h1>Edit Category</h1>
+    <h1>Add New Type</h1>
 
-    <form method="post" action="{{ route('admin.categories.update', ['category' => $category]) }}" novalidate>
+    <form method="post" action="{{ route('admin.types.store') }}" novalidate>
         @csrf
-        @method('put')
 
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                value="{{ old('name', $category->name) }}">
+                value="{{ old('name') }}">
             @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -21,7 +20,7 @@
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3"
-                name="description">{{ old('description', $category->description) }}</textarea>
+                name="description">{{ old('description') }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -29,6 +28,6 @@
             @enderror
         </div>
 
-        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-primary">Save</button>
     </form>
 @endsection

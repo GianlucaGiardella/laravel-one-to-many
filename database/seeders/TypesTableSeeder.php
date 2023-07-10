@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CategoriesTableSeeder extends Seeder
+class TypesTableSeeder extends Seeder
 {
     public function run()
     {
-        $categories = [
+        $types = [
             [
                 'name'          => 'Uncategorized',
                 'description'   => 'Lorem picsum',
@@ -29,8 +29,8 @@ class CategoriesTableSeeder extends Seeder
             ]
         ];
 
-        foreach ($categories as $category) {
-            Category::create($category);
+        foreach ($types as $type) {
+            Type::create($type);
         }
     }
 }
