@@ -6,7 +6,7 @@
     @if (session('delete_success'))
         @php $project = session('delete_success') @endphp
         <div class="alert alert-danger">
-            Project "{{ $project->title }}" deleted
+            Project "{{ $project->title }}" deleted.
         </div>
     @endif
 
@@ -44,13 +44,13 @@
                             <h1 class="modal-title fs-5" id="deleteModalLabel">Are you sure ?</h1>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                             <form action=""
-                                data-template="{{ route('admin.projects.destroy', ['project' => '*****']) }}"
-                                method="project" class="d-inline-block" id="confirm-delete">
+                                data-template="{{ route('admin.projects.destroy', ['project' => '*****']) }}" method="post"
+                                class="d-inline-block" id="confirm-delete">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-danger">Yes</button>
                             </form>
                         </div>
                     </div>
