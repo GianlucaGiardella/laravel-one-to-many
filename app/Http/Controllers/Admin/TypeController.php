@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class TypeController extends Controller
 {
     public function index()
     {
-        $categories = Type::all();
+        $types = Type::all();
 
         return view('admin.types.index', compact('types'));
     }
@@ -27,12 +27,12 @@ class CategoryController extends Controller
 
     public function show(Type $type)
     {
-        return view('admin.categories.show', compact('type'));
+        return view('admin.types.show', compact('type'));
     }
 
     public function edit(Type $type)
     {
-        return view('admin.categories.edit', compact('type'));
+        return view('admin.types.edit', compact('type'));
     }
 
     public function update(Request $request, Type $type)

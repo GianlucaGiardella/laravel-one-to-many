@@ -3,29 +3,30 @@
 namespace Database\Seeders;
 
 use App\Models\Type;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TypesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(Faker $faker)
     {
         $types = [
             [
                 'name'          => 'Uncategorized',
-                'description'   => 'Lorem picsum',
+                'description'   => $faker->words(rand(20, 40), true),
             ],
             [
                 'name'          => 'Front-End',
-                'description'   => 'Lorem picsum',
+                'description'   => $faker->words(rand(20, 40), true),
             ],
             [
                 'name'          => 'Back-End',
-                'description'   => 'Lorem picsum',
+                'description'   => $faker->words(rand(20, 40), true),
             ],
             [
                 'name'          => 'Full Stack',
-                'description'   => 'Lorem picsum',
+                'description'   => $faker->words(rand(20, 40), true),
             ]
         ];
 

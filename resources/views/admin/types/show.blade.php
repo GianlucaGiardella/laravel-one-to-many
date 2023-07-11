@@ -6,8 +6,8 @@
 
     <h3>Type's Posts</h3>
     <ul>
-        @foreach ($type->types as $type)
-            <li><a href="{{ route('admin.types.show', ['type' => $type]) }}">{{ $type->title }}</a></li>
+        @foreach ($type->projects as $project)
+            <li><a href="{{ route('admin.projects.show', ['project' => $project]) }}">{{ $project->title }}</a></li>
         @endforeach
     </ul>
 @endsection
